@@ -18,7 +18,7 @@
     $environment,
 
     [Parameter(HelpMessage="Angi url til xxx")]
-    [ValidatePattern("^http[s]?://.*")]
+    [ValidatePattern("^http[s]?://.+")]
     [string]
     $url
 )
