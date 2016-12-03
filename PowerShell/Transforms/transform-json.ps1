@@ -1,6 +1,6 @@
 ﻿param(
 	[Parameter(Mandatory = $true, HelpMessage = "Angi filsti til kilde")]
-	[Alias("source")]
+	[Alias("source", "src")]
 	[ValidatePattern(".+\.json$")]
 	[string]
 	$sourcePath,
