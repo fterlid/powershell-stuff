@@ -1,9 +1,15 @@
 ﻿param(
-	[Parameter(Mandatory = $true, HelpMessage = "Angi filsti til kilde")]
+	[Parameter(Mandatory = $true, HelpMessage = "Angi filsti til kildefil")]
 	[Alias("source", "src")]
 	[ValidatePattern(".+\.json$")]
 	[string]
 	$sourcePath,
+
+	[Parameter(Mandatory = $true, HelpMessage = "Angi filsti til destinasjonsfil")]
+	[Alias("destination", "dest")]
+	[ValidatePattern(".+\.json$")]
+	[string]
+	$destinationPath,
 
 	[Parameter(Mandatory=$true, HelpMessage="Angi miljø")]
 	[Alias("env", "miljø")]
