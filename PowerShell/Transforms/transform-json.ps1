@@ -1,4 +1,4 @@
-﻿param(
+﻿Param(
 	[Parameter(Mandatory = $true, HelpMessage = "Angi filsti til kildefil")]
 	[Alias("source", "src")]
 	[ValidatePattern(".+\.json$")]
@@ -11,7 +11,7 @@
 	[string]
 	$destinationPath,
 
-	[Parameter(Mandatory=$true, HelpMessage="Angi miljø")]
+	[Parameter(HelpMessage="Angi miljø")]
 	[Alias("env", "miljø")]
     [ValidateSet("DEV", "TEST", "PROD")]
     [string]
