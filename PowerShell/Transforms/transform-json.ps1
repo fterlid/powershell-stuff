@@ -23,6 +23,27 @@
     $url
 )
 
-Write-Host $sourcePath
-Write-Host $environment
-Write-Host $url
+function Set-Property {
+	Param(
+		[Parameter(ValueFromPipeline = $true)][psobject] $obj,
+		[string] $propertyName,
+		$propertyValue
+	)
+	
+	$propertyExists = [bool]($obj.PSobject.Properties.Name -match $propertyName);
+	
+	if ($propertyExists) {
+		$obj.$propertyName = $propertyValue;
+	}
+	else {
+		$obj | Add-Member -NotePropertyName $propertyName -NotePropertyValue $propertyValue
+	}
+}
+
+$environment = $environment.ToUpperInvariant()
+
+$properties = (Get-Content $sourcePath) -join "`n" | ConvertFrom-Json
+$properties | Set-Property -propertyName "environment" -propertyValue $environment
+$properties | Set-Property -propertyName "url" -propertyValue $url
+
+$properties | ConvertTo-Json | Out-File -FilePath $destinationPath;
